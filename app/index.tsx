@@ -1,0 +1,43 @@
+import { ImageBackground, SafeAreaView, Text, View } from "react-native"
+import "../global.css"
+import beachImage from "@/assets/meditation-images/beach.webp"
+import { StatusBar } from "expo-status-bar"
+import { LinearGradient } from "expo-linear-gradient"
+import CustomButton from "@/components/CustomButton"
+import { useRouter } from "expo-router"
+const App = () => {
+	const router = useRouter()
+	return (
+		<View className="flex-1">
+			<ImageBackground
+				className="flex-1"
+				resizeMode="cover"
+				source={beachImage}
+			>
+				<LinearGradient
+					className="flex-1"
+					colors={["rgba(0,0,0, 0.4)", "rgba(0,0,0, 0.8)"]}
+				>
+					<SafeAreaView className="flex-1 justify-between mx-5 my-12">
+						<View>
+							<Text className="text-center text-white text-4xl font-bold">
+								Simple Meditation
+							</Text>
+							<Text className="text-center text-white text-regular text-2xl mt-3">
+								Simplifying Meditation for everyone
+							</Text>
+						</View>
+						<View>
+							<CustomButton
+								onPress={() => router.push("./nature-meditate")}
+								title="gettttt"
+							/>
+						</View>
+						<StatusBar style="light" />
+					</SafeAreaView>
+				</LinearGradient>
+			</ImageBackground>
+		</View>
+	)
+}
+export default App
