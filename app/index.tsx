@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar"
 import { LinearGradient } from "expo-linear-gradient"
 import CustomButton from "@/components/CustomButton"
 import { useRouter } from "expo-router"
+import AppGradient from "@/components/AppGradient"
 const App = () => {
 	const router = useRouter()
 	return (
@@ -14,11 +15,8 @@ const App = () => {
 				resizeMode="cover"
 				source={beachImage}
 			>
-				<LinearGradient
-					className="flex-1"
-					colors={["rgba(0,0,0, 0.4)", "rgba(0,0,0, 0.8)"]}
-				>
-					<SafeAreaView className="flex-1 justify-between mx-5 my-12">
+				<AppGradient colors={["rgba(0,0,0, 0.4)", "rgba(0,0,0, 0.8)"]}>
+					<SafeAreaView className="flex-1 justify-between">
 						<View>
 							<Text className="text-center text-white text-4xl font-bold">
 								Simple Meditation
@@ -35,7 +33,7 @@ const App = () => {
 						</View>
 						<StatusBar style="light" />
 					</SafeAreaView>
-				</LinearGradient>
+				</AppGradient>
 			</ImageBackground>
 		</View>
 	)
