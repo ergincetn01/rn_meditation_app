@@ -2,7 +2,7 @@ import { View, Text } from "react-native"
 import React from "react"
 import { Tabs } from "expo-router"
 import Colors from "@/constants/Colors"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons"
 const TabsLayout = () => {
 	return (
 		<Tabs
@@ -29,11 +29,7 @@ const TabsLayout = () => {
 				options={{
 					tabBarLabel: "Affirmations",
 					tabBarIcon: ({ color }) => (
-						<MaterialCommunityIcons
-							name="flower-tulip"
-							size={26}
-							color={color}
-						/>
+						<Entypo name="open-book" size={26} color={color} />
 					),
 				}}
 			/>
