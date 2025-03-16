@@ -13,7 +13,12 @@ const Meditate = () => {
 	const { id } = useLocalSearchParams()
 	const [isMeditating, setIsMeditating] = useState<boolean>(false)
 	const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false)
-	const { duration: secRemaining, setDuration } = useContext(TimerContext)
+	const {
+		duration: secRemaining,
+		selectedDuration,
+		setSelectedDuration,
+		setDuration,
+	} = useContext(TimerContext)
 
 	const [audio, setAudio] = useState<Audio.Sound>()
 	useEffect(() => {
@@ -61,7 +66,7 @@ const Meditate = () => {
 	}
 
 	const toggleStatus = async () => {
-		if (secRemaining === 0) setDuration(10)
+		if (secRemaining === 0) setDuration(selectedDuration)
 		setIsMeditating(!isMeditating)
 		await toggleSound()
 	}
@@ -92,7 +97,10 @@ const Meditate = () => {
 			>
 				<AppGradient colors={["#rgba(0,0,0, 0.3)", "rgba(0,0,0,0.9)"]}>
 					<Pressable
-						onPress={() => router.back()}
+						onPress={() => {
+							setDuration(selectedDuration)
+							router.back()
+						}}
 						className="absolute top-16 left-6 z-10"
 					>
 						<AntDesign
