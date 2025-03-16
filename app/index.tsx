@@ -16,7 +16,7 @@ const App = () => {
 				source={beachImage}
 			>
 				<AppGradient colors={["rgba(0,0,0, 0.4)", "rgba(0,0,0, 0.8)"]}>
-					<SafeAreaView className="flex-1 justify-between">
+					<SafeAreaView className="py-4 flex-1 justify-between">
 						<View>
 							<Text className="text-center text-white text-4xl font-bold">
 								Simple Meditation
