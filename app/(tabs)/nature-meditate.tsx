@@ -12,7 +12,7 @@ const NatureMeditate = () => {
 	return (
 		<View className="flex-1">
 			<AppGradient colors={["#161b2e", "#0a4d4a", "#766e67"]}>
-				<View className="mb-6">
+				<View className="mb-6 mt-2">
 					<Text className="text-gray-200 mb-3 text-4xl font-bold text-left">
 						Welcome, Ergin
 					</Text>
@@ -20,14 +20,13 @@ const NatureMeditate = () => {
 						Start your meditation practice
 					</Text>
 				</View>
-				<View>
+				<View className="flex-1">
 					<FlatList
-						className="mb-20"
 						data={MEDITATION_DATA}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
 							<Pressable
-								className="h-48 my-3 rounded-md overflow-hidden"
+								className="h-48 mb-3 rounded-md overflow-hidden"
 								onPress={() =>
 									router.push(`/meditate/${item.id}`)
 								}
@@ -51,7 +50,7 @@ const NatureMeditate = () => {
 								</ImageBackground>
 							</Pressable>
 						)}
-						showsVerticalScrollIndicator
+						showsVerticalScrollIndicator={false}
 					/>
 				</View>
 			</AppGradient>
