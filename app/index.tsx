@@ -28,7 +28,7 @@ const App = () => {
 						<View>
 							<CustomButton
 								onPress={() => router.push("/nature-meditate")}
-								title="gettttt"
+								title="Get Started"
 							/>
 						</View>
 						<StatusBar style="light" />
