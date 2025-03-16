@@ -16,7 +16,6 @@ const Meditate = () => {
 	const {
 		duration: secRemaining,
 		selectedDuration,
-		setSelectedDuration,
 		setDuration,
 	} = useContext(TimerContext)
 

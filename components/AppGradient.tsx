@@ -1,4 +1,3 @@
-import { View, Text } from "react-native"
 import React, { FC } from "react"
 import { LinearGradient } from "expo-linear-gradient"
 import Content from "./Content"

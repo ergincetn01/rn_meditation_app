@@ -1,6 +1,5 @@
-import { View, Text } from "react-native"
 import React, { useEffect } from "react"
-import { Slot, SplashScreen, Stack } from "expo-router"
+import { SplashScreen, Stack } from "expo-router"
 import { useFonts } from "expo-font"
 import TimerProvider from "@/context/TimerContext"
 SplashScreen.preventAutoHideAsync()

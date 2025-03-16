@@ -8,8 +8,7 @@ import { TimerContext } from "@/context/TimerContext"
 
 const AdjustMeditate = () => {
 	const router = useRouter()
-	const { duration, setSelectedDuration, setDuration } =
-		useContext(TimerContext)
+	const { setSelectedDuration, setDuration } = useContext(TimerContext)
 	const handlePress = (d: number) => {
 		setDuration(d)
 		setSelectedDuration(d)

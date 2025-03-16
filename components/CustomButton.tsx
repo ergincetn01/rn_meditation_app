@@ -1,10 +1,4 @@
-import {
-	View,
-	Text,
-	TextStyle,
-	ViewStyle,
-	TouchableOpacity,
-} from "react-native"
+import { Text, TouchableOpacity } from "react-native"
 import React, { FC } from "react"
 
 interface CustomButtonProps {
