@@ -61,11 +61,14 @@ const AffirmationPractice = () => {
 						/>
 					</Pressable>
 					<ScrollView
-						className="mt-20"
+						contentContainerStyle={{
+							flexGrow: 1,
+							justifyContent: "center",
+						}}
 						showsVerticalScrollIndicator={false}
 					>
 						<View className="h-full justify-center">
-							<View className="h-4/5 justify-center">
+							<View className="h-full self-center justify-center">
 								{sentences.map((s, idx) => (
 									<Text
 										key={idx}
