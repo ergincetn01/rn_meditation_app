@@ -8,15 +8,24 @@ import { TimerContext } from "@/context/TimerContext"
 
 const AdjustMeditate = () => {
 	const router = useRouter()
-	const { setSelectedDuration, setDuration } = useContext(TimerContext)
+	const { setSelectedDuration, setDuration, selectedDuration } =
+		useContext(TimerContext)
 	const handlePress = (d: number) => {
 		setDuration(d)
 		setSelectedDuration(d)
 		router.back()
 	}
+
+	const adjustDurationData = [
+		{ duration: 60 },
+		{ duration: 180 },
+		{ duration: 300 },
+		{ duration: 600 },
+		{ duration: 1200 },
+	]
 	return (
 		<View className="flex-1 relative">
-			<AppGradient colors={["#161b2e", "#0a4d4a", "#766e67"]}>
+			<AppGradient colors={["#161b2e", "#873CF1", "#060433"]}>
 				<Pressable
 					onPress={() => router.back()}
 					className="absolute top-12 left-6 z-10"
@@ -29,36 +38,24 @@ const AdjustMeditate = () => {
 						Adjust Meditation Duration
 					</Text>
 					<View>
-						<CustomButton
-							title="1 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(1 * 60)}
-						/>
-						<CustomButton
-							title="3 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(3 * 60)}
-						/>
-						<CustomButton
-							title="5 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(5 * 60)}
-						/>
-						<CustomButton
-							title="10 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(10 * 60)}
-						/>
-						<CustomButton
-							title="20 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(20 * 60)}
-						/>
-						<CustomButton
-							title="30 min"
-							containerStyles="mb-4"
-							onPress={() => handlePress(30 * 60)}
-						/>
+						{adjustDurationData.map((b, idx) => {
+							const isSelected =
+								b.duration === selectedDuration ? true : false
+							return (
+								<CustomButton
+									key={idx}
+									title={`${(
+										b.duration / 60
+									).toString()} min`}
+									containerStyles={`mb-4 justify-center ${
+										isSelected
+											? "bg-yellow-400"
+											: "bg-white"
+									}`}
+									onPress={() => handlePress(b.duration)}
+								/>
+							)
+						})}
 					</View>
 				</View>
 			</AppGradient>
