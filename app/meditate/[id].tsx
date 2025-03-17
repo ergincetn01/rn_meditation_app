@@ -1,4 +1,10 @@
-import { View, Text, ImageBackground, Pressable } from "react-native"
+import {
+	View,
+	Text,
+	ImageBackground,
+	Pressable,
+	TouchableOpacity,
+} from "react-native"
 import React, { useContext, useEffect, useState } from "react"
 import MEDITATION_IMAGES from "@/constants/meditation-images"
 import { AntDesign } from "@expo/vector-icons"
@@ -86,6 +92,19 @@ const Meditate = () => {
 
 		router.push("/(modal)/adjust-duration")
 	}
+	const resetDuration = () => {
+		setDuration(selectedDuration)
+		setIsMeditating(false)
+		setIsAudioPlaying(false)
+
+		if (audio) {
+			audio.unloadAsync()
+			setAudio(undefined)
+		}
+	}
+
+	const startOrResume: string =
+		secRemaining === selectedDuration ? "Start" : "Resume"
 
 	return (
 		<View className="flex-1">
@@ -120,11 +139,38 @@ const Meditate = () => {
 							title="Adjust Time"
 							onPress={handleDuration}
 						/>
-						<CustomButton
-							title={isMeditating ? "Pause" : "Start"}
-							onPress={toggleStatus}
-							containerStyles="mt-4"
-						/>
+						{isMeditating ? (
+							<View className="w-full justify-center flex-row gap-4">
+								<TouchableOpacity
+									onPress={toggleStatus}
+									className={
+										"justify-center items-center bg-white rounded-xl min-h-[62px] mt-4 flex-1"
+									}
+									activeOpacity={0.7}
+								>
+									<Text className="font-semibold text-lg">
+										Pause
+									</Text>
+								</TouchableOpacity>
+								<TouchableOpacity
+									onPress={resetDuration}
+									className={
+										"justify-center items-center bg-white rounded-xl min-h-[62px] mt-4 flex-1"
+									}
+									activeOpacity={0.7}
+								>
+									<Text className="font-semibold text-lg">
+										Reset Session
+									</Text>
+								</TouchableOpacity>
+							</View>
+						) : (
+							<CustomButton
+								title={startOrResume}
+								onPress={toggleStatus}
+								containerStyles="mt-4"
+							/>
+						)}
 					</View>
 				</AppGradient>
 			</ImageBackground>
