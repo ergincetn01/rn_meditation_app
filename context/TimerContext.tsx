@@ -7,9 +7,9 @@ interface TimerContextType {
 	setSelectedDuration: React.Dispatch<React.SetStateAction<number>>
 }
 export const TimerContext = createContext<TimerContextType>({
-	duration: 60,
+	duration: 600,
 	setDuration: () => {},
-	selectedDuration: 60,
+	selectedDuration: 600,
 	setSelectedDuration: () => {},
 })
 
@@ -18,8 +18,8 @@ interface TimerContextProps {
 }
 
 const TimerProvider = ({ children }: TimerContextProps) => {
-	const [duration, setDuration] = useState(60)
-	const [selectedDuration, setSelectedDuration] = useState(60)
+	const [duration, setDuration] = useState(600)
+	const [selectedDuration, setSelectedDuration] = useState(600)
 
 	return (
 		<TimerContext.Provider
